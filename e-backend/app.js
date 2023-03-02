@@ -17,3 +17,4 @@ app.use(cors());
 app.listen(port, () => {
   console.log(`listening on localhost:${port}`);
 });
+console.log("test");
