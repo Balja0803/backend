@@ -2,13 +2,22 @@ GET http://localhost:4000/products HTTP/1.1
 
 ###
 
-POST http://localhost:4000/product HTTP/1.1
+POST http://localhost:4000/product/add HTTP/1.1
 content-type: application/json
 
 {
-    "id": 2,
-    "name": "iphone 16"
-}
+    "name":"4-Door Flex Fridge",
+    "brand_id":2000,
+    "category_id": 1000,
+    "created_date":"2023-03-03",
+    "description":"Customize a Samsung Bespoke 3- or 4-door French door refrigerator or 4-Door Flex refrigerator with panels available in multiple colors and finishes. Plus, shop for matching appliances.",
+    "sale":23,
+    "price":12222,
+    "stock":12,
+    "image":"https://image-us.samsung.com/SamsungUS/home/home-appliances/refrigerators/090321/rs22t5561sr/RS22T5561SR_01_SIlver_samsung.jpg?$product-details-jpg$"
+    }
 
 ### 
 GET http://localhost:4000/employees?limit=3 HTTP/1.1
+
+###

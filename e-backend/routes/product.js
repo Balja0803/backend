@@ -1,20 +1,24 @@
 import express from "express";
+import { addProduct } from "../services/product-service.js";
 
-const Router = express.Router();
+const prodRouter = express.Router();
 
 let products = [{ id: 1, name: "iphone15" }];
 
-Router.get("/products", (req, res) => {
+prodRouter.get("/products", (req, res) => {
   console.log("get products huselt irlee");
   res
     .status(200)
     .send({ message: " backend in development, thank you for your patience" });
 });
 
-Router.post("/product", (req, res) => {
+prodRouter.post("/product/add", async (req, res) => {
   console.log(req.body);
-  products.push(req.body);
+  const property = Object.keys(req.body);
+  const values = Object.values(req.body);
+  await addProduct(property, values);
+
   res.status(200).send(products);
 });
 
-export default Router;
+export default prodRouter;
