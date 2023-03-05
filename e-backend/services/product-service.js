@@ -13,3 +13,8 @@ export async function addProduct(property, values) {
   );
   return rows;
 }
+
+export async function deleteProduct(id) {
+  const [rows] = await pool.query(`DELETE FROM product WHERE id=${id}`);
+  return rows;
+}

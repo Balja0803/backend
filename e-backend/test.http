@@ -1,11 +1,12 @@
-GET http://localhost:4000/products HTTP/1.1
+GET http://localhost:4000/products?1limit HTTP/1.1
 
-###
+### product add 
 
 POST http://localhost:4000/product/add HTTP/1.1
 content-type: application/json
 
-{
+{   
+    
     "name":"4-Door Flex Fridge",
     "brand_id":2000,
     "category_id": 1000,
@@ -17,7 +18,46 @@ content-type: application/json
     "image":"https://image-us.samsung.com/SamsungUS/home/home-appliances/refrigerators/090321/rs22t5561sr/RS22T5561SR_01_SIlver_samsung.jpg?$product-details-jpg$"
     }
 
-### 
+### user req
+
+GET http://localhost:4000/users?limit=3 HTTP/1.1
+
+### user add 
+
+POST http://localhost:4000/user/add HTTP/1.1
+Content-Type: application/json
+
+{
+
+    "name": "dulamaa",
+    "role": "user",
+    "password": "123456",
+    "email": "dulam@example.com",
+    "contact": "99888766",
+    "address_1": "chd 6 zanabazar st 46-78",
+    "address_2": "",
+    "user_image": "",
+    "register_date": " 2023-03-05" 
+
+}
+
+### delete user
+
+DELETE http://localhost:4000/user/delete/10002 HTTP/1.1
+
+
+### delete product
+
+DELETE http://localhost:4000/product/delete/4004 HTTP/1.1
+
+   
+### emps from morning
 GET http://localhost:4000/employees?limit=3 HTTP/1.1
 
-###
+### brand add 
+POST http://localhost:4000/brand/add HTTP/1.1
+Content-Type: application/json
+{
+    "id":2000,
+    "name": "Apple"
+}
