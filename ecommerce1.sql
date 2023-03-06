@@ -7,9 +7,9 @@
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+DROP DATABASE IF EXISTS ecommerce;
+CREATE DATABASE IF NOT EXISTS ecommerce;
+USE ecommerce;
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -22,15 +22,20 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
-
+DROP TABLE IF EXISTS brand,
+                     category,
+                     product,
+                     spec,
+                     user,
+                     wishlist;
 --
 -- Table structure for table `brand`
 --
 
 CREATE TABLE `brand` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id`   INT(11)        NOT NULL,
+  `name` VARCHAR(255)   NOT NULL
+) AUTO_INCREMENT=2000;
 
 -- --------------------------------------------------------
 
@@ -39,9 +44,9 @@ CREATE TABLE `brand` (
 --
 
 CREATE TABLE `category` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id`   INT(11)        NOT NULL,
+  `name` VARCHAR(255) NOT NULL
+) AUTO_INCREMENT=1000;
 
 -- --------------------------------------------------------
 
@@ -50,17 +55,17 @@ CREATE TABLE `category` (
 --
 
 CREATE TABLE `product` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `brand_id` int(11) DEFAULT NULL,
-  `category_id` int(11) DEFAULT NULL,
-  `created_date` date DEFAULT NULL,
-  `description` varchar(255) NOT NULL,
-  `sale` varchar(255) NOT NULL,
-  `price` double NOT NULL,
-  `stock` int(11) NOT NULL,
-  `image` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id` INT(11) NOT NULL,
+  `name` VARCHAR(255) NOT NULL,
+  `brand_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `created_date` DATE NOT NULL,
+  `description` VARCHAR(255) NOT NULL,
+  `sale` VARCHAR(255) NOT NULL,
+  `price` DOUBLE NOT NULL,
+  `stock` INT(11) NOT NULL,
+  `image` VARCHAR(255) NOT NULL
+) AUTO_INCREMENT=4000;
 
 -- --------------------------------------------------------
 
@@ -73,7 +78,7 @@ CREATE TABLE `spec` (
   `product_id` int(11) DEFAULT NULL,
   `property` varchar(255) NOT NULL,
   `value` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) AUTO_INCREMENT=3000;
 
 -- --------------------------------------------------------
 
@@ -83,7 +88,7 @@ CREATE TABLE `spec` (
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
   `role` enum('admin','moderator','user') NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -92,7 +97,7 @@ CREATE TABLE `user` (
   `address_2` varchar(255) DEFAULT NULL,
   `user_image` varchar(255) DEFAULT NULL,
   `register_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) AUTO_INCREMENT=10000;
 
 -- --------------------------------------------------------
 
@@ -102,9 +107,9 @@ CREATE TABLE `user` (
 
 CREATE TABLE `wishlist` (
   `id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `product_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `user_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL
+) AUTO_INCREMENT=5000;
 
 --
 -- Indexes for dumped tables
@@ -217,6 +222,4 @@ ALTER TABLE `wishlist`
   ADD CONSTRAINT `wishlist_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`);
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
