@@ -8,7 +8,7 @@ specRouter.post("/spec/add", async (req, res) => {
   const property = Object.keys(req.body);
   const values = Object.values(req.body);
   const result = await addSpec(property, values);
-  res.status(200).send(result);
+  // res.status(200).send(result);
 });
 
 export default specRouter;
