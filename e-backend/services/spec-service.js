@@ -9,5 +9,4 @@ export async function addSpec(property, values) {
   // );
   // return rows;
   // console.log(prop);
-  console.log(vals);
 }
